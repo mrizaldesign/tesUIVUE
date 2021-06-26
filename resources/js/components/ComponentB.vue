@@ -23,70 +23,9 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td><input type="text" class="form-control" placeholder="Description" /></td>
-                    <td><input type="text" class="form-control" placeholder="Qty" /></td>
-                    <td>
-                        <uom/>
-                    </td>
-                    <td><input type="text" class="form-control" placeholder="Unit Price" /></td>
-                    <td><input type="text" class="form-control" placeholder="0" /></td>
-                    <td><input type="text" class="form-control" placeholder="0" /></td>
-                    <td><i class="fa fa-arrow-right"></i></td>
-                    <td>
-                        <select class="form-control">
-                            <option>USD</option>
-                            <option>AED</option>
-                            <option>SGD</option>
-                        </select>
-                    </td>
-                    <td>0.00</td>
-                    <td>0.00</td>
-                    <td>0.00</td>
-                    <td>
-                        <select class="form-control">
-                            <option>Select an option</option>
-                            <option>USD</option>
-                            <option>AED</option>
-                            <option>SGD</option>
-                        </select>
-                    </td>
-                    <td><button type="button" class="btn btn-secondary"><i class="fa fa-minus"></i></button></td>
-                </tr>
-                <tr>
-                    <td><input type="text" class="form-control" placeholder="" /></td>
-                    <td><input type="text" class="form-control" placeholder="" /></td>
-                    <td>
-                        <select class="form-control">
-                            <option>SHP</option>
-                            <option>HSP</option>
-                            <option>SHH</option>
-                        </select>
-                    </td>
-                    <td><input type="text" class="form-control" placeholder="" /></td>
-                    <td><input type="text" class="form-control" placeholder="" /></td>
-                    <td><input type="text" class="form-control" placeholder="" /></td>
-                    <td><i class="fa fa-arrow-right"></i></td>
-                    <td>
-                        <select class="form-control">
-                            <option>USD</option>
-                            <option>AED</option>
-                            <option>SGD</option>
-                        </select>
-                    </td>
-                    <td>0.00</td>
-                    <td>0.00</td>
-                    <td>0.00</td>
-                    <td>
-                        <select class="form-control">
-                            <option>Select an option</option>
-                            <option>USD</option>
-                            <option>AED</option>
-                            <option>SGD</option>
-                        </select>
-                    </td>
-                    <td><button type="button" class="btn btn-secondary"><i class="fa fa-minus"></i></button></td>
-                </tr>
+                
+                <units v-for="unit in units" v-bind:dataunit="unit" />
+
                 <tr>
                     <td colspan="7" rowspan="2">lorem ipsum</td>
                     <td colspan="4">
@@ -123,17 +62,24 @@
 
 <script>
 
-import { mapMutations } from 'vuex';
-import uom from './tabledata/uom';
+import { mapMutations, mapState } from 'vuex';
+
+import units from './tabledata/units';
+
 export default {
     components: {
-        uom
+        units
     },
     methods: {
         ...mapMutations({
             increment: 'tabledata/increment'
         })
-    }
+    },
+    computed: {
+		...mapState({
+			units: state => state.tabledata.units,
+		}),
+	},
 }
 
 </script>
