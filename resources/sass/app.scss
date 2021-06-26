@@ -3,6 +3,13 @@
 
 // Variables
 @import 'variables';
+@import 'global';
+
+@import './components/tablecost';
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+@import "~font-awesome/scss/font-awesome.scss";
+
+

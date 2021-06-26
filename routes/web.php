@@ -16,3 +16,28 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/tabledata', function () {
+    $data = [
+        'uom'   => [
+            'SHP',
+            'HSS',
+            'ISP'
+        ],
+        'currency'  => [
+            'USD',
+            'AED',
+            'IDR',
+            'JPY',
+            'INR',
+            'MYR'
+        ],
+        'chargeto'  => [
+            'customer',
+            'receiver',
+            'agent',
+            'supplier'
+        ]
+    ];
+    return response()->json($data);
+});
