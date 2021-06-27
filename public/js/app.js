@@ -1961,6 +1961,8 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 /* harmony import */ var _tabledata_units__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./tabledata/units */ "./resources/js/components/tabledata/units.vue");
+/* harmony import */ var _tabledata_totalRow__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./tabledata/totalRow */ "./resources/js/components/tabledata/totalRow.vue");
+/* harmony import */ var _stores_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../stores/index */ "./resources/js/stores/index.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -2016,33 +2018,28 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    units: _tabledata_units__WEBPACK_IMPORTED_MODULE_1__["default"]
+    units: _tabledata_units__WEBPACK_IMPORTED_MODULE_1__["default"],
+    totalRow: _tabledata_totalRow__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
-  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapMutations"])({
-    increment: 'tabledata/increment'
-  })),
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])({
     units: function units(state) {
       return state.tabledata.units;
+    },
+    currencysums: function currencysums(state) {
+      return state.tabledata.currencysum;
     }
-  }))
+  })),
+  methods: {
+    addUnit: function addUnit() {
+      _stores_index__WEBPACK_IMPORTED_MODULE_3__["default"].commit('tabledata/addUnit');
+    }
+  }
 });
 
 /***/ }),
@@ -2093,6 +2090,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _stores_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../stores/index */ "./resources/js/stores/index.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -2108,12 +2106,48 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])({
     currencys: function currencys(state) {
       return state.tabledata.currency;
     }
-  }))
+  })),
+  methods: {
+    onChange: function onChange(event) {
+      console.log(event.target.value);
+      var data = {
+        name: 'currency',
+        val: event.target.value,
+        index: this.$vnode.key
+      };
+      _stores_index__WEBPACK_IMPORTED_MODULE_1__["default"].commit('tabledata/editUnit', data);
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/tabledata/totalRow.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/tabledata/totalRow.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['currencysum']
 });
 
 /***/ }),
@@ -2131,6 +2165,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _uom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./uom */ "./resources/js/components/tabledata/uom.vue");
 /* harmony import */ var _currency__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./currency */ "./resources/js/components/tabledata/currency.vue");
 /* harmony import */ var _chargeto__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./chargeto */ "./resources/js/components/tabledata/chargeto.vue");
+/* harmony import */ var _stores_index__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../stores/index */ "./resources/js/stores/index.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -2165,6 +2200,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['dataunit'],
   components: {
@@ -2173,9 +2209,56 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     chargeto: _chargeto__WEBPACK_IMPORTED_MODULE_3__["default"]
   },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])({
-    currencys: function currencys(state) {
-      return state.tabledata.currency;
+    units: function units(state) {
+      return state.tabledata.units;
     }
+  })),
+  methods: _objectSpread({
+    descChange: function descChange() {
+      var data = {
+        name: 'desc',
+        val: this.dataunit.desc,
+        index: this.$vnode.key
+      };
+      _stores_index__WEBPACK_IMPORTED_MODULE_4__["default"].commit('tabledata/editUnit', data);
+    },
+    qtyChange: function qtyChange() {
+      var data = {
+        name: 'qty',
+        val: this.dataunit.qty,
+        index: this.$vnode.key
+      };
+      _stores_index__WEBPACK_IMPORTED_MODULE_4__["default"].commit('tabledata/editUnit', data);
+    },
+    priceChange: function priceChange() {
+      var data = {
+        name: 'unitPrice',
+        val: this.dataunit.unitPrice,
+        index: this.$vnode.key
+      };
+      _stores_index__WEBPACK_IMPORTED_MODULE_4__["default"].commit('tabledata/editUnit', data);
+    },
+    discountChange: function discountChange() {
+      var data = {
+        name: 'discount',
+        val: this.dataunit.discount,
+        index: this.$vnode.key
+      };
+      _stores_index__WEBPACK_IMPORTED_MODULE_4__["default"].commit('tabledata/editUnit', data);
+    },
+    vatChange: function vatChange() {
+      var data = {
+        name: 'vat',
+        val: this.dataunit.vat,
+        index: this.$vnode.key
+      };
+      _stores_index__WEBPACK_IMPORTED_MODULE_4__["default"].commit('tabledata/editUnit', data);
+    },
+    deleteUnit: function deleteUnit() {
+      _stores_index__WEBPACK_IMPORTED_MODULE_4__["default"].commit('tabledata/removeUnit', this.$vnode.key);
+    }
+  }, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapMutations"])({
+    removeUnit: 'tabledata/removeUnit'
   }))
 });
 
@@ -38681,19 +38764,49 @@ var render = function() {
       _vm._v(" "),
       _vm._m(0),
       _vm._v(" "),
-      _c("button", { on: { click: _vm.increment } }, [_vm._v("Submit")]),
-      _vm._v(" "),
       _c("table", { staticClass: "table", attrs: { id: "tablecost" } }, [
         _vm._m(1),
         _vm._v(" "),
         _c(
           "tbody",
           [
-            _vm._l(_vm.units, function(unit) {
-              return _c("units", { attrs: { dataunit: unit } })
+            _vm._l(_vm.units, function(unit, index) {
+              return _c("units", { key: index, attrs: { dataunit: unit } })
             }),
             _vm._v(" "),
-            _vm._m(2)
+            _c("tr", [
+              _c("td", { attrs: { colspan: "7", rowspan: "2" } }, [
+                _vm._v("lorem ipsum")
+              ]),
+              _vm._v(" "),
+              _c("td", { attrs: { colspan: "4" } }, [
+                _c(
+                  "table",
+                  { staticClass: "totaltable" },
+                  _vm._l(_vm.currencysums, function(currencysum, index) {
+                    return _c("totalRow", {
+                      key: index,
+                      attrs: { currencysum: currencysum }
+                    })
+                  }),
+                  1
+                )
+              ]),
+              _vm._v(" "),
+              _c("td"),
+              _vm._v(" "),
+              _c("td", [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-primary",
+                    attrs: { type: "button" },
+                    on: { click: _vm.addUnit }
+                  },
+                  [_c("i", { staticClass: "fa fa-plus" })]
+                )
+              ])
+            ])
           ],
           2
         )
@@ -38766,54 +38879,6 @@ var staticRenderFns = [
         _c("th", { attrs: { scope: "col" } })
       ])
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c("td", { attrs: { colspan: "7", rowspan: "2" } }, [
-        _vm._v("lorem ipsum")
-      ]),
-      _vm._v(" "),
-      _c("td", { attrs: { colspan: "4" } }, [
-        _c("table", { staticClass: "totaltable" }, [
-          _c("tr", [
-            _c("td", { staticStyle: { width: "29%" } }, [
-              _vm._v("USD in Total")
-            ]),
-            _vm._v(" "),
-            _c("td", { staticStyle: { width: "29%" } }, [_vm._v("0.00")]),
-            _vm._v(" "),
-            _c("td", { staticStyle: { width: "25%" } }, [_vm._v("0.00")]),
-            _vm._v(" "),
-            _c("td", { staticStyle: { width: "25%" } }, [_vm._v("0.00")])
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c("td", { staticStyle: { width: "29%" } }, [
-              _vm._v("AED in Total")
-            ]),
-            _vm._v(" "),
-            _c("td", { staticStyle: { width: "29%" } }, [_vm._v("0.00")]),
-            _vm._v(" "),
-            _c("td", { staticStyle: { width: "25%" } }, [_vm._v("0.00")]),
-            _vm._v(" "),
-            _c("td", { staticStyle: { width: "25%" } }, [_vm._v("0.00")])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("td"),
-      _vm._v(" "),
-      _c("td", [
-        _c(
-          "button",
-          { staticClass: "btn btn-primary", attrs: { type: "button" } },
-          [_c("i", { staticClass: "fa fa-plus" })]
-        )
-      ])
-    ])
   }
 ]
 render._withStripped = true
@@ -38873,7 +38938,14 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "select",
-    { staticClass: "form-control" },
+    {
+      staticClass: "form-control",
+      on: {
+        change: function($event) {
+          return _vm.onChange($event)
+        }
+      }
+    },
     _vm._l(_vm.currencys, function(currency) {
       return _c("option", { key: currency }, [
         _vm._v("\n        " + _vm._s(currency) + "\n    ")
@@ -38881,6 +38953,46 @@ var render = function() {
     }),
     0
   )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/tabledata/totalRow.vue?vue&type=template&id=c6bb3a90&":
+/*!*********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/tabledata/totalRow.vue?vue&type=template&id=c6bb3a90& ***!
+  \*********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("tr", [
+    _c("td", { staticStyle: { width: "29%" } }, [
+      _vm._v(_vm._s(_vm.currencysum.name) + " in Total")
+    ]),
+    _vm._v(" "),
+    _c("td", { staticStyle: { width: "29%" } }, [
+      _vm._v(_vm._s(_vm.currencysum.vat))
+    ]),
+    _vm._v(" "),
+    _c("td", { staticStyle: { width: "25%" } }, [
+      _vm._v(_vm._s(_vm.currencysum.subtotal))
+    ]),
+    _vm._v(" "),
+    _c("td", { staticStyle: { width: "25%" } }, [
+      _vm._v(_vm._s(_vm.currencysum.total))
+    ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -38919,6 +39031,7 @@ var render = function() {
         attrs: { type: "text", placeholder: "Description" },
         domProps: { value: _vm.dataunit.desc },
         on: {
+          change: _vm.descChange,
           input: function($event) {
             if ($event.target.composing) {
               return
@@ -38926,32 +39039,135 @@ var render = function() {
             _vm.$set(_vm.dataunit, "desc", $event.target.value)
           }
         }
+      }),
+      _vm._v(_vm._s(this.$vnode.key))
+    ]),
+    _vm._v(" "),
+    _c("td", [
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.dataunit.qty,
+            expression: "dataunit.qty"
+          }
+        ],
+        staticClass: "form-control",
+        attrs: { type: "text", placeholder: "Qty" },
+        domProps: { value: _vm.dataunit.qty },
+        on: {
+          change: _vm.qtyChange,
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.$set(_vm.dataunit, "qty", $event.target.value)
+          }
+        }
+      })
+    ]),
+    _vm._v(" "),
+    _c("td", [_c("uom")], 1),
+    _vm._v(" "),
+    _c("td", [
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.dataunit.unitPrice,
+            expression: "dataunit.unitPrice"
+          }
+        ],
+        staticClass: "form-control",
+        attrs: { type: "text", placeholder: "Unit Price" },
+        domProps: { value: _vm.dataunit.unitPrice },
+        on: {
+          change: _vm.priceChange,
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.$set(_vm.dataunit, "unitPrice", $event.target.value)
+          }
+        }
+      })
+    ]),
+    _vm._v(" "),
+    _c("td", [
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.dataunit.discount,
+            expression: "dataunit.discount"
+          }
+        ],
+        staticClass: "form-control",
+        attrs: { type: "text", placeholder: "0" },
+        domProps: { value: _vm.dataunit.discount },
+        on: {
+          change: _vm.discountChange,
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.$set(_vm.dataunit, "discount", $event.target.value)
+          }
+        }
+      })
+    ]),
+    _vm._v(" "),
+    _c("td", [
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.dataunit.vat,
+            expression: "dataunit.vat"
+          }
+        ],
+        staticClass: "form-control",
+        attrs: { type: "text", placeholder: "0" },
+        domProps: { value: _vm.dataunit.vat },
+        on: {
+          change: _vm.vatChange,
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.$set(_vm.dataunit, "vat", $event.target.value)
+          }
+        }
       })
     ]),
     _vm._v(" "),
     _vm._m(0),
     _vm._v(" "),
-    _c("td", [_c("uom")], 1),
+    _c("td", [_c("currency", { key: this.$vnode.key })], 1),
     _vm._v(" "),
-    _vm._m(1),
+    _c("td", [_vm._v(_vm._s(_vm.units[this.$vnode.key].vatamount))]),
     _vm._v(" "),
-    _vm._m(2),
+    _c("td", [_vm._v(_vm._s(_vm.units[this.$vnode.key].subtotal))]),
     _vm._v(" "),
-    _vm._m(3),
-    _vm._v(" "),
-    _vm._m(4),
-    _vm._v(" "),
-    _c("td", [_c("currency")], 1),
-    _vm._v(" "),
-    _c("td", [_vm._v("0.00")]),
-    _vm._v(" "),
-    _c("td", [_vm._v("0.00")]),
-    _vm._v(" "),
-    _c("td", [_vm._v("0.00")]),
+    _c("td", [_vm._v(_vm._s(_vm.units[this.$vnode.key].total))]),
     _vm._v(" "),
     _c("td", [_c("chargeto")], 1),
     _vm._v(" "),
-    _vm._m(5)
+    _c("td", [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-secondary",
+          attrs: { type: "button" },
+          on: { click: _vm.deleteUnit }
+        },
+        [_c("i", { staticClass: "fa fa-minus" })]
+      )
+    ])
   ])
 }
 var staticRenderFns = [
@@ -38959,63 +39175,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("input", {
-        staticClass: "form-control",
-        attrs: { type: "text", placeholder: "Qty" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("input", {
-        staticClass: "form-control",
-        attrs: { type: "text", placeholder: "Unit Price" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("input", {
-        staticClass: "form-control",
-        attrs: { type: "text", placeholder: "0" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("input", {
-        staticClass: "form-control",
-        attrs: { type: "text", placeholder: "0" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c("td", [_c("i", { staticClass: "fa fa-arrow-right" })])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c(
-        "button",
-        { staticClass: "btn btn-secondary", attrs: { type: "button" } },
-        [_c("i", { staticClass: "fa fa-minus" })]
-      )
-    ])
   }
 ]
 render._withStripped = true
@@ -52580,7 +52740,7 @@ Vue.component('App', __webpack_require__(/*! ./components/App.vue */ "./resource
 var app = new Vue({
   el: '#app',
   store: _stores_index__WEBPACK_IMPORTED_MODULE_1__["default"],
-  mounted: function mounted() {
+  created: function created() {
     return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
         while (1) {
@@ -52922,6 +53082,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/tabledata/totalRow.vue":
+/*!********************************************************!*\
+  !*** ./resources/js/components/tabledata/totalRow.vue ***!
+  \********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _totalRow_vue_vue_type_template_id_c6bb3a90___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./totalRow.vue?vue&type=template&id=c6bb3a90& */ "./resources/js/components/tabledata/totalRow.vue?vue&type=template&id=c6bb3a90&");
+/* harmony import */ var _totalRow_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./totalRow.vue?vue&type=script&lang=js& */ "./resources/js/components/tabledata/totalRow.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _totalRow_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _totalRow_vue_vue_type_template_id_c6bb3a90___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _totalRow_vue_vue_type_template_id_c6bb3a90___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/tabledata/totalRow.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/tabledata/totalRow.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************!*\
+  !*** ./resources/js/components/tabledata/totalRow.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_totalRow_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./totalRow.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/tabledata/totalRow.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_totalRow_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/tabledata/totalRow.vue?vue&type=template&id=c6bb3a90&":
+/*!***************************************************************************************!*\
+  !*** ./resources/js/components/tabledata/totalRow.vue?vue&type=template&id=c6bb3a90& ***!
+  \***************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_totalRow_vue_vue_type_template_id_c6bb3a90___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./totalRow.vue?vue&type=template&id=c6bb3a90& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/tabledata/totalRow.vue?vue&type=template&id=c6bb3a90&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_totalRow_vue_vue_type_template_id_c6bb3a90___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_totalRow_vue_vue_type_template_id_c6bb3a90___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/tabledata/units.vue":
 /*!*****************************************************!*\
   !*** ./resources/js/components/tabledata/units.vue ***!
@@ -53112,15 +53341,6 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
     currency: [],
     chargeto: [],
     units: [{
-      desc: 'aaaaaaaaaaaaaa',
-      qty: null,
-      uom: null,
-      unitPrice: null,
-      discount: null,
-      vat: null,
-      currency: null,
-      chargeTo: null
-    }, {
       desc: null,
       qty: null,
       uom: null,
@@ -53128,15 +53348,16 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
       discount: null,
       vat: null,
       currency: null,
+      vatamount: 0,
+      subtotal: 0,
+      total: 0,
       chargeTo: null
-    }]
+    }],
+    currencysum: []
   },
   mutations: {
-    increment: function increment(state) {
-      return state.count++;
-    },
-    decrement: function decrement(state) {
-      return state.count--;
+    setDefaultCurrency: function setDefaultCurrency(state, payload) {
+      state.units[0].currency = payload;
     },
     setUOM: function setUOM(state, payload) {
       state.uom = payload;
@@ -53146,6 +53367,141 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
     },
     setChargeto: function setChargeto(state, payload) {
       state.chargeto = payload;
+    },
+    removeUnit: function removeUnit(state, payload) {
+      state.units.splice(payload, 1); //Currency sum
+
+      state.currencysum = [];
+
+      var _loop = function _loop(i) {
+        var found = 0;
+        state.currencysum.find(function (o, k) {
+          if (o.name === state.units[i].currency) {
+            var data = {
+              name: state.units[i].currency,
+              vat: o.vat + state.units[i].vatamount,
+              subtotal: o.subtotal + state.units[i].subtotal,
+              total: o.total + state.units[i].total
+            };
+            state.currencysum[k] = data;
+            found = 1;
+            return true;
+          }
+        });
+
+        if (found === 0) {
+          var data = {
+            name: state.units[i].currency,
+            vat: state.units[i].vatamount,
+            subtotal: state.units[i].subtotal,
+            total: state.units[i].total
+          };
+          state.currencysum.push(data);
+        }
+
+        found = 0;
+      };
+
+      for (var i = 0; i < state.units.length; i++) {
+        _loop(i);
+      }
+    },
+    addUnit: function addUnit(state) {
+      var data = {
+        desc: null,
+        qty: null,
+        uom: null,
+        unitPrice: null,
+        discount: null,
+        vat: null,
+        vatamount: 0,
+        subtotal: 0,
+        total: 0,
+        currency: state.currency[0],
+        chargeTo: null
+      };
+      state.units.push(data);
+    },
+    editUnit: function editUnit(state, payload) {
+      switch (payload.name) {
+        case 'desc':
+          state.units[payload.index].desc = payload.val;
+          break;
+
+        case 'qty':
+          state.units[payload.index].qty = parseInt(payload.val, 10);
+          break;
+
+        case 'uom':
+          state.units[payload.index].uom = payload.val;
+          break;
+
+        case 'unitPrice':
+          state.units[payload.index].unitPrice = parseInt(payload.val, 10);
+          break;
+
+        case 'discount':
+          state.units[payload.index].discount = parseInt(payload.val, 10);
+          break;
+
+        case 'vat':
+          state.units[payload.index].vat = parseInt(payload.val, 10);
+          break;
+
+        case 'currency':
+          state.units[payload.index].currency = payload.val;
+          break;
+
+        case 'chargeTo':
+          state.units[payload.index].chargeTo = payload.val;
+          break;
+
+        default:
+      }
+
+      if (state.units[payload.index].discount > 0) {
+        state.units[payload.index].subtotal = state.units[payload.index].qty * (state.units[payload.index].unitPrice - state.units[payload.index].unitPrice * state.units[payload.index].discount / 100);
+      } else {
+        state.units[payload.index].subtotal = state.units[payload.index].qty * state.units[payload.index].unitPrice;
+      }
+
+      state.units[payload.index].vatamount = state.units[payload.index].subtotal * state.units[payload.index].vat / 100;
+      state.units[payload.index].total = state.units[payload.index].subtotal + state.units[payload.index].vatamount; //currency sum
+
+      state.currencysum = [];
+
+      var _loop2 = function _loop2(i) {
+        var found = 0;
+        state.currencysum.find(function (o, k) {
+          if (o.name === state.units[i].currency) {
+            var data = {
+              name: state.units[i].currency,
+              vat: o.vat + state.units[i].vatamount,
+              subtotal: o.subtotal + state.units[i].subtotal,
+              total: o.total + state.units[i].total
+            };
+            state.currencysum[k] = data;
+            found = 1;
+            return true;
+          }
+        });
+
+        if (found === 0) {
+          var data = {
+            name: state.units[i].currency,
+            vat: state.units[i].vatamount,
+            subtotal: state.units[i].subtotal,
+            total: state.units[i].total
+          };
+          state.currencysum.push(data);
+        }
+
+        found = 0;
+      };
+
+      for (var i = 0; i < state.units.length; i++) {
+        _loop2(i);
+      }
     }
   },
   actions: {
@@ -53162,6 +53518,7 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
                   commit('setUOM', response.data.uom);
                   commit('setCurrency', response.data.currency);
                   commit('setChargeto', response.data.chargeto);
+                  commit('setDefaultCurrency', response.data.currency[0]);
                 });
 
               case 3:

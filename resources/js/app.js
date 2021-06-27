@@ -32,7 +32,7 @@ Vue.component('App', require('./components/App.vue').default);
 const app = new Vue({
 	el: '#app',
 	store,
-	async mounted() {
+	async created() {
 		await store.dispatch('tabledata/getData');
 	},
 });

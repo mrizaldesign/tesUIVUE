@@ -3,7 +3,6 @@
     <div class="row">
         <h1>{{$store.state.tabledata.count}}</h1>
         <h3>Cost Detail <i class="fa fa-chevron-down"></i></h3>
-        <button @click="increment">Submit</button>
        <table class="table" id="tablecost">
             <thead>
                 <tr>
@@ -24,29 +23,17 @@
             </thead>
             <tbody>
                 
-                <units v-for="unit in units" v-bind:dataunit="unit" />
+                <units v-for="(unit, index) in units" :key="index" :dataunit="unit" />
 
                 <tr>
                     <td colspan="7" rowspan="2">lorem ipsum</td>
                     <td colspan="4">
                         <table class="totaltable">
-                            <tr>
-                                <td style="width:29%;">USD in Total</td>
-                                <td style="width:29%;">0.00</td>
-                                <td style="width:25%;">0.00</td>
-                                <td style="width:25%;">0.00</td>
-                            </tr>
-                             <tr>
-                                <td style="width:29%;">AED in Total</td>
-                                <td style="width:29%;">0.00</td>
-                                <td style="width:25%;">0.00</td>
-                                <td style="width:25%;">0.00</td>
-                            </tr>
-        
+                            <totalRow v-for="(currencysum, index) in currencysums" :key="index" :currencysum="currencysum" />
                         </table>
                     </td>
                     <td></td>
-                    <td><button type="button" class="btn btn-primary"><i class="fa fa-plus"></i></button></td>
+                    <td><button type="button" class="btn btn-primary" @click="addUnit"><i class="fa fa-plus"></i></button></td>
 
                 </tr>
                 
@@ -65,20 +52,25 @@
 import { mapMutations, mapState } from 'vuex';
 
 import units from './tabledata/units';
+import totalRow from './tabledata/totalRow';
+
+import store from '../stores/index';
 
 export default {
     components: {
-        units
-    },
-    methods: {
-        ...mapMutations({
-            increment: 'tabledata/increment'
-        })
+        units,
+        totalRow
     },
     computed: {
 		...mapState({
 			units: state => state.tabledata.units,
+            currencysums: state => state.tabledata.currencysum,
 		}),
+	},
+    methods: {
+		addUnit() {
+			store.commit('tabledata/addUnit');
+		},
 	},
 }
 
