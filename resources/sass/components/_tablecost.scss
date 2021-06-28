@@ -1,3 +1,15 @@
+.tabledata-container {
+    h3.title{
+        font-size: 18px;
+        font-weight: 600;
+        color: $main-color;
+        i{
+            margin-left: 10px;
+            font-size: 18px;
+        }
+    }
+}
+
 #tablecost{
     thead{
         background: #f5f6f8;
@@ -5,11 +17,15 @@
             font-weight: 400;
             font-size: 13px;
             padding: 0.5rem 0.3rem;
+            border-bottom: none!important;
         }
     }
     tbody{
         td{
             padding: 0.5rem 0.3rem;
+            &.text{
+                padding: 1rem;
+            }
         }
     }
     input, select{

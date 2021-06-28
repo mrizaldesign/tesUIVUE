@@ -1,8 +1,7 @@
 <template>
-<div>
+<div class="tabledata-container">
     <div class="row">
-        <h1>{{$store.state.tabledata.count}}</h1>
-        <h3>Cost Detail <i class="fa fa-chevron-down"></i></h3>
+        <h3 class="title">Cost Detail <i class="fa fa-chevron-down"></i></h3>
        <table class="table" id="tablecost">
             <thead>
                 <tr>
@@ -22,7 +21,7 @@
                 </tr>
             </thead>
             <tbody>
-                
+
                 <units v-for="(unit, index) in units" :key="index" :dataunit="unit" />
 
                 <tr>
@@ -36,20 +35,18 @@
                     <td><button type="button" class="btn btn-primary" @click="addUnit"><i class="fa fa-plus"></i></button></td>
 
                 </tr>
-                
-               
+
             </tbody>
         </table>
-        
+
     </div>
 
 </div>
 </template>
 
-
 <script>
 
-import { mapMutations, mapState } from 'vuex';
+import {mapState} from 'vuex';
 
 import units from './tabledata/units';
 import totalRow from './tabledata/totalRow';
@@ -57,21 +54,21 @@ import totalRow from './tabledata/totalRow';
 import store from '../stores/index';
 
 export default {
-    components: {
-        units,
-        totalRow
-    },
-    computed: {
+	components: {
+		units,
+		totalRow,
+	},
+	computed: {
 		...mapState({
 			units: state => state.tabledata.units,
-            currencysums: state => state.tabledata.currencysum,
+			currencysums: state => state.tabledata.currencysum,
 		}),
 	},
-    methods: {
+	methods: {
 		addUnit() {
 			store.commit('tabledata/addUnit');
 		},
 	},
-}
+};
 
 </script>

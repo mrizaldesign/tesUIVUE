@@ -15,6 +15,10 @@ body {
   border-color: #00C0BF !important;
 }
 
+input {
+  outline: none;
+}
+
 @media (min-width: 1200px) {
   .container-xl,
   .container-lg,
@@ -25,6 +29,17 @@ body {
   }
 }
 
+.tabledata-container h3.title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #00C0BF;
+}
+
+.tabledata-container h3.title i {
+  margin-left: 10px;
+  font-size: 18px;
+}
+
 #tablecost thead {
   background: #f5f6f8;
 }
@@ -33,10 +48,15 @@ body {
   font-weight: 400;
   font-size: 13px;
   padding: 0.5rem 0.3rem;
+  border-bottom: none !important;
 }
 
 #tablecost tbody td {
   padding: 0.5rem 0.3rem;
+}
+
+#tablecost tbody td.text {
+  padding: 1rem;
 }
 
 #tablecost input,
@@ -58,6 +78,20 @@ body {
 
 .totaltable tr {
   background: #F5F6F8;
+}
+
+.button-bottom {
+  background: #FBFBFB;
+  padding: 20px;
+  margin: 0 -15px;
+}
+
+.button-bottom button {
+  padding: 10px 20px;
+}
+
+.button-bottom button.btn-primary {
+  padding: 10px 50px;
 }
 
 /*!

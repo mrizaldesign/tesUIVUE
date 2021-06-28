@@ -1,0 +1,11 @@
+.button-bottom{
+    background: #FBFBFB;
+    padding: 20px; 
+    margin: 0 -15px;
+    button{
+        padding: 10px 20px;
+        &.btn-primary{
+            padding: 10px 50px;
+        }
+    }
+}

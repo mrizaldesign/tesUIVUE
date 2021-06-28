@@ -1,29 +1,20 @@
 <template>
     <div class="container">
         <componentB/>
-        <div>
-            <button>Cancel</button>
-            <button>Save as Draft</button>
-            <button @click="increment">Submit</button>
-            
+        <div class="button-bottom text-right">
+            <button class="btn btn-link">Cancel</button>
+            <button class="btn btn-light">Save as Draft</button>
+            <button class="btn btn-primary">Submit</button>
         </div>
     </div>
 </template>
 
 <script>
 
-    import ComponentB from './ComponentB';
-    export default {
-        mounted() {
-            console.log('Component mounted.')
-        },
-        components: {
-            ComponentB
-        },
-        methods: {
-            increment(){
-                this.$store.commit('increment');
-            }
-        } 
-    }
+import ComponentB from './ComponentB';
+export default {
+	components: {
+		ComponentB,
+	},
+};
 </script>

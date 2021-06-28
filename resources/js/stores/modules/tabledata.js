@@ -108,7 +108,7 @@ export default {
 				case 'currency':
 					state.units[payload.index].currency = payload.val;
 					break;
-				case 'chargeTo':
+				case 'chargeto':
 					state.units[payload.index].chargeTo = payload.val;
 					break;
 				default:

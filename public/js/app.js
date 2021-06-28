@@ -1932,19 +1932,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  mounted: function mounted() {
-    console.log('Component mounted.');
-  },
   components: {
     ComponentB: _ComponentB__WEBPACK_IMPORTED_MODULE_0__["default"]
-  },
-  methods: {
-    increment: function increment() {
-      this.$store.commit('increment');
-    }
   }
 });
 
@@ -1969,9 +1960,6 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-//
-//
-//
 //
 //
 //
@@ -2054,6 +2042,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _stores_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../stores/index */ "./resources/js/stores/index.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -2070,12 +2059,24 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])({
     chargetos: function chargetos(state) {
       return state.tabledata.chargeto;
     }
-  }))
+  })),
+  methods: {
+    onChange: function onChange(event) {
+      console.log(event.target.value);
+      var data = {
+        name: 'chargeto',
+        val: event.target.value,
+        index: this.$vnode.key
+      };
+      _stores_index__WEBPACK_IMPORTED_MODULE_1__["default"].commit('tabledata/editUnit', data);
+    }
+  }
 });
 
 /***/ }),
@@ -2274,6 +2275,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _stores_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../stores/index */ "./resources/js/stores/index.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -2289,12 +2291,24 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])({
     uoms: function uoms(state) {
       return state.tabledata.uom;
     }
-  }))
+  })),
+  methods: {
+    onChange: function onChange(event) {
+      console.log(event.target.value);
+      var data = {
+        name: 'currency',
+        val: event.target.value,
+        index: this.$vnode.key
+      };
+      _stores_index__WEBPACK_IMPORTED_MODULE_1__["default"].commit('tabledata/editUnit', data);
+    }
+  }
 });
 
 /***/ }),
@@ -38722,21 +38736,24 @@ var render = function() {
   return _c(
     "div",
     { staticClass: "container" },
-    [
-      _c("componentB"),
-      _vm._v(" "),
-      _c("div", [
-        _c("button", [_vm._v("Cancel")]),
-        _vm._v(" "),
-        _c("button", [_vm._v("Save as Draft")]),
-        _vm._v(" "),
-        _c("button", { on: { click: _vm.increment } }, [_vm._v("Submit")])
-      ])
-    ],
+    [_c("componentB"), _vm._v(" "), _vm._m(0)],
     1
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "button-bottom text-right" }, [
+      _c("button", { staticClass: "btn btn-link" }, [_vm._v("Cancel")]),
+      _vm._v(" "),
+      _c("button", { staticClass: "btn btn-light" }, [_vm._v("Save as Draft")]),
+      _vm._v(" "),
+      _c("button", { staticClass: "btn btn-primary" }, [_vm._v("Submit")])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -38758,10 +38775,8 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
+  return _c("div", { staticClass: "tabledata-container" }, [
     _c("div", { staticClass: "row" }, [
-      _c("h1", [_vm._v(_vm._s(_vm.$store.state.tabledata.count))]),
-      _vm._v(" "),
       _vm._m(0),
       _vm._v(" "),
       _c("table", { staticClass: "table", attrs: { id: "tablecost" } }, [
@@ -38819,7 +38834,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("h3", [
+    return _c("h3", { staticClass: "title" }, [
       _vm._v("Cost Detail "),
       _c("i", { staticClass: "fa fa-chevron-down" })
     ])
@@ -38904,14 +38919,24 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "select",
-    { staticClass: "form-control" },
-    _vm._l(_vm.chargetos, function(chargeto) {
-      return _c("option", { key: chargeto }, [
-        _c("option", [_vm._v("Select an option")]),
-        _vm._v("\n        " + _vm._s(chargeto) + "\n    ")
-      ])
-    }),
-    0
+    {
+      staticClass: "form-control",
+      on: {
+        change: function($event) {
+          return _vm.onChange($event)
+        }
+      }
+    },
+    [
+      _c("option", [_vm._v("Select an option")]),
+      _vm._v(" "),
+      _vm._l(_vm.chargetos, function(chargeto) {
+        return _c("option", { key: chargeto }, [
+          _vm._v("\n        " + _vm._s(chargeto) + "\n    ")
+        ])
+      })
+    ],
+    2
   )
 }
 var staticRenderFns = []
@@ -39039,8 +39064,7 @@ var render = function() {
             _vm.$set(_vm.dataunit, "desc", $event.target.value)
           }
         }
-      }),
-      _vm._v(_vm._s(this.$vnode.key))
+      })
     ]),
     _vm._v(" "),
     _c("td", [
@@ -39068,7 +39092,7 @@ var render = function() {
       })
     ]),
     _vm._v(" "),
-    _c("td", [_c("uom")], 1),
+    _c("td", [_c("uom", { key: this.$vnode.key })], 1),
     _vm._v(" "),
     _c("td", [
       _c("input", {
@@ -39149,13 +39173,19 @@ var render = function() {
     _vm._v(" "),
     _c("td", [_c("currency", { key: this.$vnode.key })], 1),
     _vm._v(" "),
-    _c("td", [_vm._v(_vm._s(_vm.units[this.$vnode.key].vatamount))]),
+    _c("td", { staticClass: "text" }, [
+      _vm._v(_vm._s(_vm.units[this.$vnode.key].vatamount))
+    ]),
     _vm._v(" "),
-    _c("td", [_vm._v(_vm._s(_vm.units[this.$vnode.key].subtotal))]),
+    _c("td", { staticClass: "text" }, [
+      _vm._v(_vm._s(_vm.units[this.$vnode.key].subtotal))
+    ]),
     _vm._v(" "),
-    _c("td", [_vm._v(_vm._s(_vm.units[this.$vnode.key].total))]),
+    _c("td", { staticClass: "text" }, [
+      _vm._v(_vm._s(_vm.units[this.$vnode.key].total))
+    ]),
     _vm._v(" "),
-    _c("td", [_c("chargeto")], 1),
+    _c("td", [_c("chargeto", { key: this.$vnode.key })], 1),
     _vm._v(" "),
     _c("td", [
       _c(
@@ -39175,7 +39205,9 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("td", [_c("i", { staticClass: "fa fa-arrow-right" })])
+    return _c("td", { staticClass: "text" }, [
+      _c("i", { staticClass: "fa fa-arrow-right" })
+    ])
   }
 ]
 render._withStripped = true
@@ -39201,7 +39233,14 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "select",
-    { staticClass: "form-control" },
+    {
+      staticClass: "form-control",
+      on: {
+        change: function($event) {
+          return _vm.onChange($event)
+        }
+      }
+    },
     _vm._l(_vm.uoms, function(uom) {
       return _c("option", { key: uom }, [
         _vm._v("\n        " + _vm._s(uom) + "\n    ")
@@ -53452,7 +53491,7 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
           state.units[payload.index].currency = payload.val;
           break;
 
-        case 'chargeTo':
+        case 'chargeto':
           state.units[payload.index].chargeTo = payload.val;
           break;
 

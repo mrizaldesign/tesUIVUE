@@ -1,22 +1,22 @@
 <template>
     <tr>
-        <td><input v-model="dataunit.desc" @change="descChange" type="text" class="form-control" placeholder="Description" />{{this.$vnode.key}}</td>
+        <td><input v-model="dataunit.desc" @change="descChange" type="text" class="form-control" placeholder="Description" /></td>
         <td><input v-model="dataunit.qty" @change="qtyChange" type="text" class="form-control" placeholder="Qty" /></td>
         <td>
-            <uom />
+            <uom :key="this.$vnode.key"/>
         </td>
         <td><input v-model="dataunit.unitPrice" @change="priceChange" type="text" class="form-control" placeholder="Unit Price" /></td>
         <td><input v-model="dataunit.discount" @change="discountChange" type="text" class="form-control" placeholder="0" /></td>
         <td><input v-model="dataunit.vat" @change="vatChange" type="text" class="form-control" placeholder="0" /></td>
-        <td><i class="fa fa-arrow-right"></i></td>
+        <td class="text"><i class="fa fa-arrow-right"></i></td>
         <td>
             <currency :key="this.$vnode.key" />
         </td>
-        <td>{{units[this.$vnode.key].vatamount}}</td>
-        <td>{{units[this.$vnode.key].subtotal}}</td>
-        <td>{{units[this.$vnode.key].total}}</td>
+        <td class="text">{{units[this.$vnode.key].vatamount}}</td>
+        <td class="text">{{units[this.$vnode.key].subtotal}}</td>
+        <td class="text">{{units[this.$vnode.key].total}}</td>
         <td>
-            <chargeto />
+            <chargeto :key="this.$vnode.key" />
         </td>
         <td><button type="button" class="btn btn-secondary" @click="deleteUnit"><i class="fa fa-minus"></i></button></td>
     </tr>
