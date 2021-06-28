@@ -1932,6 +1932,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -38790,9 +38791,7 @@ var render = function() {
             }),
             _vm._v(" "),
             _c("tr", [
-              _c("td", { attrs: { colspan: "7", rowspan: "2" } }, [
-                _vm._v("lorem ipsum")
-              ]),
+              _vm._m(2),
               _vm._v(" "),
               _c("td", { attrs: { colspan: "4" } }, [
                 _c(
@@ -38894,6 +38893,23 @@ var staticRenderFns = [
         _c("th", { attrs: { scope: "col" } })
       ])
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "td",
+      { staticClass: "exchangerate", attrs: { colspan: "7", rowspan: "2" } },
+      [
+        _vm._v("Exchange Rate 1 USD =  "),
+        _c("input", {
+          staticClass: "form-control",
+          attrs: { type: "text", value: "3.6725" }
+        }),
+        _vm._v("  AED")
+      ]
+    )
   }
 ]
 render._withStripped = true

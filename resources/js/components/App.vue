@@ -1,5 +1,6 @@
 <template>
     <div class="container">
+
         <componentB/>
         <div class="button-bottom text-right">
             <button class="btn btn-link">Cancel</button>
@@ -12,6 +13,7 @@
 <script>
 
 import ComponentB from './ComponentB';
+
 export default {
 	components: {
 		ComponentB,

@@ -68,6 +68,19 @@ input {
   height: 40px;
 }
 
+#tablecost .exchangerate {
+  font-size: 12px;
+}
+
+#tablecost .exchangerate input {
+  display: inline-block;
+  width: 100px;
+  margin: 0 5px;
+  padding: 2px 5px !important;
+  height: 30px;
+  text-align: right;
+}
+
 .totaltable th,
 .totaltable td {
   border-top: none !important;

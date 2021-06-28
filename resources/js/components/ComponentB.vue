@@ -25,8 +25,8 @@
                 <units v-for="(unit, index) in units" :key="index" :dataunit="unit" />
 
                 <tr>
-                    <td colspan="7" rowspan="2">lorem ipsum</td>
-                    <td colspan="4">
+                    <td colspan="7" rowspan="2" class="exchangerate">Exchange Rate 1 USD =  <input type="text" class="form-control" value="3.6725" />  AED</td>
+                    <td colspan="4" >
                         <table class="totaltable">
                             <totalRow v-for="(currencysum, index) in currencysums" :key="index" :currencysum="currencysum" />
                         </table>

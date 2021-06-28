@@ -35,6 +35,17 @@
         padding: 5px 10px;
         height: 40px;
     }
+    .exchangerate{
+        font-size: 12px;
+        input{
+            display: inline-block;
+            width: 100px;
+            margin: 0 5px;
+            padding: 2px 5px!important;
+            height: 30px;
+            text-align: right;
+        }
+    }
 }
 
 
